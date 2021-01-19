@@ -27,8 +27,6 @@ function calculateAll() {
 
   // ITERATION 2
 
-  let products = []
-
   let mainTable = document.getElementById("cart")
   let particularProduct = mainTable.querySelectorAll(".product")
 
