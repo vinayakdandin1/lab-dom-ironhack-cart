@@ -60,10 +60,11 @@ function calculateAll() {
 function removeProduct(event) {
   const target = event.currentTarget;
   console.log('The target in remove is:', target);
-  //document.getElementById("tablebody1").removeChild(event.target)
-
-  let someTarget = event.target
-  someTarget.remove();
+  
+  let parentElement = target.parentNode;
+  let nextParent = parentElement.parentNode
+  console.log(nextParent)
+  nextParent.remove()
 
 }
 
