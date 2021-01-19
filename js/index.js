@@ -1,17 +1,16 @@
 // ITERATION 1
 
 function updateSubtotal(product) {
-  console.log('Calculating subtotal, yey!');
+  //console.log('Calculating subtotal, yey!');
 
-  let priceItem = document.querySelector(".price span")
-  let quantityItem = document.querySelector(".quantity input")
-  let subElement = document.querySelector(".subtotal span")
-
+  let priceItem = product.querySelector(".price span")
+  let quantityItem = product.querySelector(".quantity input")
+  let subElement = product.querySelector(".subtotal span")
 
   let price = priceItem.innerHTML
   let quantity = quantityItem.value
 
-  console.log(`${price}, ${quantity.value}`)
+  //console.log(`${price}, ${quantity.value}`)
 
   let subPrice = price * quantity;
   subElement.innerHTML = subPrice
@@ -28,42 +27,37 @@ function calculateAll() {
 
   // ITERATION 2
 
-  let onePriceItem = document.querySelectorAll(".price span")
-  let oneFinalPrice =  onePriceItem[0].innerHTML;
-  let twoFinalPrice =  onePriceItem[1].innerHTML;
+  let products = []
 
-  let quantItem = document.querySelectorAll(".quantity input")
-  let oneFinalQuant = quantItem[0].value
-  let twoFinalQuant = quantItem[1].value
+  let mainTable = document.getElementById("cart")
+  let particularProduct = mainTable.querySelectorAll(".product")
 
-  let firstSubElement = document.querySelectorAll(".subtotal span")
+  //console.log(particularProduct);
+  let sub = 0;
+  for(let i = 0; i<particularProduct.length; i++) {
+    updateSubtotal(particularProduct[i]);
+    individual = updateSubtotal(particularProduct[i]);
+    sub += individual
+  }
 
-  //console.log(oneFinalPrice, twoFinalPrice, oneFinalQuant, twoFinalQuant)
-
-  let firstSubprice = oneFinalPrice * oneFinalQuant
-  let secondSubPrice = twoFinalPrice * twoFinalQuant
-
-  firstSubElement[0].innerHTML = firstSubprice
-  firstSubElement[1].innerHTML = secondSubPrice
-
-
-  // ITERATION 3
   
-  let finalTotal = firstSubprice + secondSubPrice
-
-  let totalValue = document.querySelector("#total-value span")
-  totalValue.innerHTML = finalTotal
+  // ITERATION 3
+  document.querySelector('#total-value span').innerHTML = sub
+ 
 }
 
 // ITERATION 4
 
 function removeProduct(event) {
   const target = event.currentTarget;
-  console.log('The target in remove is:', target);
+  //console.log('The target in remove is:', target);
   
+  // let mainParent = document.getElementById("tablebody1")
+  // mainParent.removeChild(target)
+
   let parentElement = target.parentNode;
   let nextParent = parentElement.parentNode
-  console.log(nextParent)
+  //console.log(nextParent)
   nextParent.remove()
 
 }
